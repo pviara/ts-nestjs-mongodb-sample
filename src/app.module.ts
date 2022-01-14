@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Module } from '@nestjs/common';
 import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose';
+import { RouterModule } from '@nestjs/core';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -19,7 +21,12 @@ import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose';
         };
         return options;
       }
-    })
+    }),
+    RouterModule.register([{
+      path: 'user',
+      module: UserModule
+    }]),
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
