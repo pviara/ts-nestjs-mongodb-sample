@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserRepository } from './user.repository';
 import { userSchema } from './user';
 
 @Module({
@@ -10,6 +11,6 @@ import { userSchema } from './user';
       name: 'User', schema: userSchema
     }])
   ],
-  providers: []
+  providers: [UserRepository]
 })
 export class UserModule { }
